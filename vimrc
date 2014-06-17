@@ -1,61 +1,12 @@
 set nocompatible               " be iMproved
 filetype off                   " required!
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
 
-" let Vundle manage Vundle
-" required! 
-" non github repos
-"Bundle 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (ie. when working on your own plugin)
-"Bundle 'file:///Users/gmarik/path/to/plugin'
-Bundle 'gmarik/vundle'
-Bundle 'tpope/vim-rails.git'
-Bundle 'L9'
-" interface
-Bundle 'bling/vim-airline'
-Bundle 'gcmt/taboo.vim'
-Bundle 'nanotech/jellybeans.vim'
-Bundle 'tpope/vim-vividchalk'
-Bundle 'endel/vim-github-colorscheme'
-Bundle 'goatslacker/mango.vim'
-" files
-Bundle 'scrooloose/nerdtree'
-Bundle 'jistr/vim-nerdtree-tabs'
-Bundle 'kien/ctrlp.vim'
-" code
-Bundle 'godlygeek/tabular'
-Bundle 'tpope/vim-surround'
-Bundle 'slim-template/vim-slim'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'tpope/vim-cucumber'
-Bundle 'nathanaelkane/vim-indent-guides'
-"Bundle ''
-Bundle 'tpope/vim-abolish'
-" snippet
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
-Bundle "garbas/vim-snipmate"
-Bundle "honza/vim-snippets"
-" to retest
-Bundle 'tpope/vim-fugitive'
-Bundle 'w0ng/vim-hybrid'
-Bundle 'gkz/vim-ls'
-"Bundle 'Lokaltog/vim-easymotion'
-"Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 
-" Git
-Bundle 'pbrisbin/vim-mkdir'
-Bundle 'danro/rename.vim'
-Bundle 'airblade/vim-gitgutter'
+if filereadable(expand("~/.vimrc.bundles"))
+    source ~/.vimrc.bundles
+  endif
 
-"
-" Brief help
-" :BundleList          - list configured bundles
-" :BundleInstall(!)    - install(update) bundles
-" :BundleSearch(!) foo - search(or refresh cache first) for foo
-" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
 "
 " see :h vundle for more details or wiki for FAQ
 " NOTE: comments after Bundle command are not allowed..
