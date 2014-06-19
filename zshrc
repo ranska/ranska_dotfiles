@@ -83,3 +83,4 @@ autoload -U down-line-or-beginning-search
 #bindkey "^[[A" up-line-or-search
 #bindkey "^[[B" up-line-or-search
 alias a='TERM=xterm-256color ranger'
+alias ':q'='exit'

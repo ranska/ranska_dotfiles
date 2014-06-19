@@ -222,7 +222,7 @@ map <Leader>é :tabnew<CR><C-p>
 map <Leader>s :vs<CR><C-p>
 map <Leader>n <C-w>w
 map <Leader>l :Tabularize /=<CR>
-
+map <Leader>p :Tabularize/\w:\zs/<CR>
 map <Leader>1 1gt
 map <Leader>2 2gt
 map <Leader>3 3gt
