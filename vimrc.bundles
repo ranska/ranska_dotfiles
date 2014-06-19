@@ -45,6 +45,9 @@ Bundle 'gkz/vim-ls'
 Bundle 'pbrisbin/vim-mkdir'
 Bundle 'danro/rename.vim'
 Bundle 'airblade/vim-gitgutter'
+Bundle 'scrooloose/syntastic'
+
+
 
 "
 " Brief help
