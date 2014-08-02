@@ -45,9 +45,20 @@ DEFAULT_USER='ranska'
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 #plugins=(git safe-paste)
-plugins=(git)
+#plugins=(git)
+plugins=(git vi-mode zsh-syntax-highlighting history-substring-search)
 
 source $ZSH/oh-my-zsh.sh
+
+# bind k and j for VI mode
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'l' history-substring-search-down
+# bind UP and DOWN arrow keys
+zmodload zsh/terminfo
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
+bindkey "$terminfo[cuu1]" history-substring-search-up
+bindkey "$terminfo[cud1]" history-substring-search-down
 
 # Customize to your needs...
 export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
@@ -66,14 +77,14 @@ alias tmux='tmux -2'
 
 #source `which tmuxinator.zsh`
 source ~/.nvm/nvm.sh
-set -o vi
-bindkey -v
+#set -o vi
+#bindkey -v
 #bindkey "\C-r" history-incremental-pattern-search-backward
-bindkey "^[[A" history-beginning-search-backward
-bindkey "^[[B" history-beginning-search-forward
+#bindkey "^[[A" history-beginning-search-backward
+#bindkey "^[[B" history-beginning-search-forward
 
-autoload -U up-line-or-beginning-search
-autoload -U down-line-or-beginning-search
+#autoload -U up-line-or-beginning-search
+#autoload -U down-line-or-beginning-search
 
 #[[ -n "${key[Up]}" ]] && bindkey "${key[Up]}" up-line-or-beginning-search
 #[[ -n "${key[Down]}" ]] && bindkey "${key[Down]}" down-line-or-beginning-search
