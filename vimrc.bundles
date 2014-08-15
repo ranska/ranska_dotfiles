@@ -50,7 +50,8 @@ Bundle 'scrooloose/syntastic'
 
 Bundle 'ecomba/vim-ruby-refactoring'
 Bundle 'vim-scripts/matchit.zip'
-
+" Plugin after tabular
+Bundle 'plasticboy/vim-markdown'
 
 "
 " Brief help

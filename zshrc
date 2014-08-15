@@ -46,20 +46,11 @@ DEFAULT_USER='ranska'
 # Example format: plugins=(rails git textmate ruby lighthouse)
 #plugins=(git safe-paste)
 #plugins=(git)
-plugins=(git vi-mode zsh-syntax-highlighting history-substring-search)
+#plugins=(git vi-mode zsh-syntax-highlighting history-substring-search)
+#plugins=(git vi-mode history-substring-search)
 
+plugins=(git vi-mode )
 source $ZSH/oh-my-zsh.sh
-
-# bind k and j for VI mode
-bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'l' history-substring-search-down
-# bind UP and DOWN arrow keys
-zmodload zsh/terminfo
-bindkey "$terminfo[kcuu1]" history-substring-search-up
-bindkey "$terminfo[kcud1]" history-substring-search-down
-bindkey "$terminfo[cuu1]" history-substring-search-up
-bindkey "$terminfo[cud1]" history-substring-search-down
-
 # Customize to your needs...
 export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
 
@@ -94,4 +85,60 @@ source ~/.nvm/nvm.sh
 #bindkey "^[[A" up-line-or-search
 #bindkey "^[[B" up-line-or-search
 alias a='TERM=xterm-256color ranger'
-alias ':q'='exit'
+alias 'q'='exit'
+
+
+
+source $ZSH/custom/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#source $ZSH/custom/zsh-syntax-highlighting-filetypes/zsh-syntax-highlighting-filetypes.zsh
+PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+test -e ~/.dircolors && eval `dircolors -b ~/.dircolors`
+#alias ls="ls --color=always" 
+alias lsl="ls++" 
+alias lda="ls++" 
+alias ls="ls --color=always" 
+alias grep="grep --color=always"
+alias egrep="egrep --color=always"
+
+
+
+source $ZSH/custom/zsh-history-substring-search/zsh-history-substring-search.zsh
+
+# bind k and j for VI mode
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
+# bind UP and DOWN arrow keys
+zmodload zsh/terminfo
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
+bindkey "$terminfo[cuu1]" history-substring-search-up
+bindkey "$terminfo[cud1]" history-substring-search-down
+
+bindkey "✔" history-substring-search-up
+bindkey "☆" history-substring-search-down
+
+
+#eval '$(dircolors -b $HOME/.dircolors)'
+
+
+# Setup zsh-autosuggestions
+source ~/.zsh-autosuggestions/autosuggestions.zsh
+
+# Enable autosuggestions automatically
+zle-line-init() {
+    zle autosuggest-start
+}
+zle -N zle-line-init
+# Accept suggestions without leaving insert mode
+bindkey '^f' vi-forward-word
+#bindkey 'é' vi-forward-word
+# or
+bindkey '^f' vi-forward-blank-word
+#bindkey 'é' vi-forward-blank-word
+
+bindkey "⦿" vi-forward-word
+bindkey "⦿" vi-forward-blank-word
+# use ctrl+t to toggle autosuggestions(hopefully this wont be needed as
+# zsh-autosuggestions is designed to be unobtrusive)
+bindkey '^T' autosuggest-toggle

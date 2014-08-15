@@ -216,8 +216,6 @@ map ♋  :tabnew<CR>
 map ♈  <C-w><C-w>
 map è :tabnew<CR>:NERDTreeToggle<CR>
 map <Leader>è :vs<CR>:NERDTreeToggle<CR>
-map <Leader>t gt
-map <Leader>d gT
 map <Leader>é :tabnew<CR><C-p>
 map <Leader>s :vs<CR><C-p>
 map <Leader>n <C-w>w
@@ -233,6 +231,10 @@ map <Leader>7 7gt
 map <Leader>8 8gt
 map <Leader>9 9gt
 map <Leader>a <C-p>
+" Rang tool
+map <Leader>t :%s/@s/\$scope/g<CR>
+"map <Leader>d gT
+
 autocmd ColorScheme * highlight Normal ctermbg=None
 autocmd ColorScheme * highlight NonText ctermbg=None
 hi Normal ctermbg=none
@@ -242,3 +244,10 @@ let g:airline_theme='wombat'
 
 syntax enable
 filetype plugin indent on
+
+
+" Mouse section 
+set ttyfast
+set mouse=a
+"xterm2 is good for iterm2 mac
+set ttymouse=xterm2
