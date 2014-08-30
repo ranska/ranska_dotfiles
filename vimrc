@@ -233,7 +233,8 @@ map <Leader>9 9gt
 map <Leader>a <C-p>
 " Rang tool
 map <Leader>t :%s/@s/\$scope/g<CR>
-"map <Leader>d gT
+map <Leader>dl :set paste<CR>
+map <Leader>dt :set nopaste<CR>
 
 autocmd ColorScheme * highlight Normal ctermbg=None
 autocmd ColorScheme * highlight NonText ctermbg=None

@@ -47,12 +47,14 @@ Bundle 'danro/rename.vim'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'scrooloose/syntastic'
 
-
 Bundle 'ecomba/vim-ruby-refactoring'
 Bundle 'vim-scripts/matchit.zip'
 " Plugin after tabular
 Bundle 'plasticboy/vim-markdown'
 
+" select indented block'
+Bundle 'kana/vim-textobj-user'
+Bundle 'glts/vim-textobj-indblock'
 "
 " Brief help
 " :BundleList          - list configured bundles

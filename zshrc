@@ -49,7 +49,7 @@ DEFAULT_USER='ranska'
 #plugins=(git vi-mode zsh-syntax-highlighting history-substring-search)
 #plugins=(git vi-mode history-substring-search)
 
-plugins=(git vi-mode )
+plugins=(git git-flow vi-mode )
 source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
@@ -142,3 +142,6 @@ bindkey "⦿" vi-forward-blank-word
 # use ctrl+t to toggle autosuggestions(hopefully this wont be needed as
 # zsh-autosuggestions is designed to be unobtrusive)
 bindkey '^T' autosuggest-toggle
+
+export PATH="$HOME/.tmuxifier/bin:$PATH"
+eval "$(tmuxifier init -)"
