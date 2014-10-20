@@ -101,6 +101,12 @@ alias ls="ls --color=always"
 alias grep="grep --color=always"
 alias egrep="egrep --color=always"
 
+alias t="tmuxifier s"
+alias beb="bundle exec middleman build"
+alias besy="bundle exec middleman s3_sync"
+alias bes="bundle exec middleman server -p"
+
+
 
 
 source $ZSH/custom/zsh-history-substring-search/zsh-history-substring-search.zsh
@@ -139,9 +145,14 @@ bindkey '^f' vi-forward-blank-word
 
 bindkey "⦿" vi-forward-word
 bindkey "⦿" vi-forward-blank-word
+
+
 # use ctrl+t to toggle autosuggestions(hopefully this wont be needed as
 # zsh-autosuggestions is designed to be unobtrusive)
 bindkey '^T' autosuggest-toggle
 
 export PATH="$HOME/.tmuxifier/bin:$PATH"
 eval "$(tmuxifier init -)"
+
+export PATH="$HOME/midman_apps/creator:$PATH"
+

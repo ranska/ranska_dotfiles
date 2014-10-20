@@ -61,3 +61,6 @@ Bundle 'glts/vim-textobj-indblock'
 " :BundleInstall(!)    - install(update) bundles
 " :BundleSearch(!) foo - search(or refresh cache first) for foo
 " :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
+
+Bundle 'xolox/vim-misc'
+Bundle 'xolox/vim-reload'

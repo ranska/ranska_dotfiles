@@ -137,10 +137,10 @@ set numberwidth=5
 "                                 nnoremap <leader><leader> <c-^>
 "
 "                                 " Get off my lawn
-"                                 nnoremap <Left> :echoe "Use h"<CR>
-"                                 nnoremap <Right> :echoe "Use l"<CR>
-"                                 nnoremap <Up> :echoe "Use k"<CR>
-"                                 nnoremap <Down> :echoe "Use j"<CR>
+"nnoremap <Left> :echoe "Use h"<CR>
+"nnoremap <Right> :echoe "Use l"<CR>
+"nnoremap <Up> :echoe "Use k"<CR>
+"nnoremap <Down> :echoe "Use j"<CR>
 "
 "                                 " Treat <li> and <p> tags like the block
 "                                 tags they are
@@ -178,8 +178,8 @@ hi IndentGuidesOdd  ctermbg=234
 hi IndentGuidesEven ctermbg=235
 autocmd  FileType * IndentGuidesEnable
 set mouse=nicr
-map h gT
-map l gt
+"map h gT
+"map l gt
 map ♥ <ESC>:w<Return>
 imap ♥ <ESC>:w<Return>
 map ♢ <ESC>:q<Return>
@@ -232,9 +232,35 @@ map <Leader>8 8gt
 map <Leader>9 9gt
 map <Leader>a <C-p>
 " Rang tool
-map <Leader>t :%s/@s/\$scope/g<CR>
+map <Leader>t :%s/$scope/\$scope/g<CR>
 map <Leader>dl :set paste<CR>
 map <Leader>dt :set nopaste<CR>
+
+"
+" RANG path
+"
+"
+cmap ⦿g source/assets/javascripts/ng/
+cmap ⦿c source/assets/javascripts/ng/controllers/
+cmap ⦿s source/assets/javascripts/ng/services/
+cmap ⦿t source/templates
+cmap ⦿p source/partials
+
+command! -range Vis call setpos('.', [0,<line1>,0,0]) |
+                    \ exe "normal V" |
+                    \ call setpos('.', [0,<line2>,0,0])
+
+"
+" coffeescript hack extract methods
+"
+" visual block
+" mettre le visual block dans un register
+" ecrire un @toto_tag à la place
+" ce dépalcer au dessu de la 1er -> ou => trouvé
+" écrire un toto_tag: ->
+" collé le contenu du registre
+" ouvrir la commande pour remplacer toto_tag par le text de son choix
+
 
 autocmd ColorScheme * highlight Normal ctermbg=None
 autocmd ColorScheme * highlight NonText ctermbg=None
@@ -252,3 +278,17 @@ set ttyfast
 set mouse=a
 "xterm2 is good for iterm2 mac
 set ttymouse=xterm2
+
+
+
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
+
+
+" no nnoremap because of surround plugin
+map <leader>sl yyP$ysiw'j$
+
+
+" source plugin under dev
+nnoremap <leader>p⦿ :source %<cr>
