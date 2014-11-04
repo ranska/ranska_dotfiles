@@ -292,3 +292,5 @@ map <leader>sl yyP$ysiw'j$
 
 " source plugin under dev
 nnoremap <leader>p⦿ :source %<cr>
+
+set backspace=2

@@ -64,3 +64,4 @@ Bundle 'glts/vim-textobj-indblock'
 
 Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-reload'
+Bundle 'mileszs/ack.vim'
