@@ -74,7 +74,7 @@ augroup vimrcEx
   autocmd BufRead,BufNewFile *.md set filetype=markdown
   "
   "           " Enable spellchecking for Markdown
-  autocmd BufRead,BufNewFile *.md setlocal spell
+  "autocmd BufRead,BufNewFile *.md setlocal spell
   "
   "               " Automatically wrap at 80 characters for Markdown
   autocmd BufRead,BufNewFile *.md setlocal textwidth=80
@@ -294,3 +294,7 @@ map <leader>sl yyP$ysiw'j$
 nnoremap <leader>p⦿ :source %<cr>
 
 set backspace=2
+set foldlevelstart=1
+
+"autocmd BufWinEnter * normal! zR
+set foldlevelstart=1

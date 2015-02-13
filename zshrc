@@ -106,6 +106,7 @@ alias beb="bundle exec middleman build"
 alias besy="bundle exec middleman s3_sync"
 alias bes="bundle exec middleman server -p"
 
+alias bnd="bundle exec middleman build && bundle exec middleman s3_sync"
 
 
 
