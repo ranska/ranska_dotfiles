@@ -1,0 +1,32 @@
+set :tmux, true
+option :b, :break, 'start a break' do
+  set :timer, 5*60
+  run
+end
+option :e, :toto, 'start a break' do
+  puts ENV['term_bg']
+  set :timer, 25*60
+  run
+end
+option :r, :titi, 'start a break' do
+  puts ENV['term_bg']
+  set :timer, 5*60
+  run
+end
+option :t, :today, 'open today sheet' do
+  `vim ~/.thyme_today.md < \`tty\` > \`tty\``
+end
+
+before do
+  puts ENV['term_bg']
+  system "osascript -e 'tell application \"iTerm\" to set background image path of current session of current terminal to \"/Users/ranska/images/iterm2/#{ENV['term_bg']}.jpg\"'"
+  #`mplayer ~/flight-of-the-bumble-bee.mp3 &`
+end
+
+
+after do |seconds_left|
+  #`notify-send -u critical "Thyme's up!"`
+  puts ENV['term_bg']
+  `echo 'after'`
+end
+
