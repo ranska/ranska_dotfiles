@@ -43,9 +43,9 @@ if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
   syntax on
 endif
 
-if filereadable(expand("~/.vim/vundles"))
-  source ~/.vim/vundles
-endif
+"if filereadable(expand("~/.vim/vundles"))
+"  source ~/.vim/vundles
+"endif
 
 filetype plugin indent on
 

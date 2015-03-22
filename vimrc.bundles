@@ -1,77 +1,100 @@
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+"set rtp+=~/.vim/bundle/vundle/
+"call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 " let Vundle manage Vundle
 " required! 
 " non github repos
 "Bundle 'git://git.wincent.com/command-t.git'
 " git repos on your local machine (ie. when working on your own plugin)
 "Bundle 'file:///Users/gmarik/path/to/plugin'
-Bundle 'gmarik/vundle'
-Bundle 'tpope/vim-rails.git'
-Bundle 'L9'
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+ 
+" old version
+"Plugin 'gmarik/vundle'
+Plugin 'tpope/vim-rails.git'
+Plugin 'L9'
 " interface
-Bundle 'bling/vim-airline'
-Bundle 'gcmt/taboo.vim'
-Bundle 'nanotech/jellybeans.vim'
-Bundle 'tpope/vim-vividchalk'
-Bundle 'endel/vim-github-colorscheme'
-Bundle 'goatslacker/mango.vim'
+Plugin 'bling/vim-airline'
+Plugin 'gcmt/taboo.vim'
+Plugin 'nanotech/jellybeans.vim'
+Plugin 'tpope/vim-vividchalk'
+Plugin 'endel/vim-github-colorscheme'
+Plugin 'goatslacker/mango.vim'
 " files
-Bundle 'scrooloose/nerdtree'
-Bundle 'jistr/vim-nerdtree-tabs'
-Bundle 'kien/ctrlp.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'kien/ctrlp.vim'
 " code
-Bundle 'godlygeek/tabular'
-Bundle 'tpope/vim-surround'
-Bundle 'slim-template/vim-slim'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'tpope/vim-cucumber'
-Bundle 'nathanaelkane/vim-indent-guides'
-"Bundle ''
-Bundle 'tpope/vim-abolish'
+Plugin 'godlygeek/tabular'
+Plugin 'tpope/vim-surround'
+Plugin 'slim-template/vim-slim'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'tpope/vim-cucumber'
+Plugin 'nathanaelkane/vim-indent-guides'
+"Plugin ''
+Plugin 'tpope/vim-abolish'
 " snippet
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
-Bundle "garbas/vim-snipmate"
-Bundle "honza/vim-snippets"
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+Plugin 'honza/vim-snippets'
 " to retest
-Bundle 'tpope/vim-fugitive'
-Bundle 'w0ng/vim-hybrid'
-Bundle 'gkz/vim-ls'
-"Bundle 'Lokaltog/vim-easymotion'
-"Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+Plugin 'tpope/vim-fugitive'
+Plugin 'w0ng/vim-hybrid'
+Plugin 'gkz/vim-ls'
+"Plugin 'Lokaltog/vim-easymotion'
+"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 
 " Git
-Bundle 'pbrisbin/vim-mkdir'
-Bundle 'danro/rename.vim'
-Bundle 'airblade/vim-gitgutter'
-Bundle 'scrooloose/syntastic'
+Plugin 'pbrisbin/vim-mkdir'
+Plugin 'danro/rename.vim'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'scrooloose/syntastic'
 
-Bundle 'ecomba/vim-ruby-refactoring'
-Bundle 'vim-scripts/matchit.zip'
+Plugin 'ecomba/vim-ruby-refactoring'
+Plugin 'vim-scripts/matchit.zip'
 " Plugin after tabular
-Bundle 'plasticboy/vim-markdown'
+Plugin 'plasticboy/vim-markdown'
 
 " select indented block'
-Bundle 'kana/vim-textobj-user'
-Bundle 'glts/vim-textobj-indblock'
+Plugin 'kana/vim-textobj-user'
+Plugin 'glts/vim-textobj-indblock'
 "
 " Brief help
-" :BundleList          - list configured bundles
-" :BundleInstall(!)    - install(update) bundles
-" :BundleSearch(!) foo - search(or refresh cache first) for foo
-" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
+" :PluginList          - list configured bundles
+" :PluginInstall(!)    - install(update) bundles
+" :PluginSearch(!) foo - search(or refresh cache first) for foo
+" :PluginClean(!)      - confirm(or auto-approve) removal of unused bundles
 
-Bundle 'xolox/vim-misc'
-Bundle 'xolox/vim-reload'
-Bundle 'mileszs/ack.vim'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-reload'
+Plugin 'mileszs/ack.vim'
 
 " coffeescript
-Bundle 'AndrewRadev/coffee_tools.vim'
-Bundle 'ranska/vim-coffeescript-refactoring'
+Plugin 'AndrewRadev/coffee_tools.vim'
+Plugin 'ranska/vim-coffeescript-refactoring'
 
 
 "new to test
 Bundle 'mhinz/vim-startify'
 
-
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just
+" :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to
+" auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+"
