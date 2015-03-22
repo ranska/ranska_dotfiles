@@ -68,3 +68,10 @@ Bundle 'mileszs/ack.vim'
 
 " coffeescript
 Bundle 'AndrewRadev/coffee_tools.vim'
+Bundle 'ranska/vim-coffeescript-refactoring'
+
+
+"new to test
+Bundle 'mhinz/vim-startify'
+
+

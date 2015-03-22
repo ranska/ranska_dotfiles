@@ -2,7 +2,6 @@ set nocompatible               " be iMproved
 filetype off                   " required!
 
 
-
 if filereadable(expand("~/.vimrc.bundles"))
     source ~/.vimrc.bundles
   endif
@@ -14,17 +13,18 @@ if filereadable(expand("~/.vimrc.bundles"))
 syntax enable
 filetype plugin indent on
 
-
 let g:taboo_tab_format = '%m[%N]%f '
 
+" Vimscript file settings ---------------------- {{{
+augroup filetype_vim
+  autocmd!
+  autocmd FileType vim setlocal foldmethod=marker
+augroup END
+" }}}
 
-
-
-
-
-
-" Leader
+" Leader ---------------------- {{{
 let mapleader = " "
+" }}}
 
 set nocompatible  " Use Vim settings, rather then Vi settings
 set nobackup
@@ -51,32 +51,26 @@ filetype plugin indent on
 
 augroup vimrcEx
   autocmd!
-
   " For all text files set 'textwidth' to 78 characters.
   autocmd FileType text setlocal textwidth=78
-
   " When editing a file, always jump to the last known cursor
-  "             position.
+  " position.
   " Don't do it for commit messages, when the position is
-  "               invalid, or when
-  "                 " inside an event handler (happens when dropping a file on
-  "                 gvim).
+  " invalid, or when
+  " inside an event handler (happens when dropping a file on
+  " gvim).
   autocmd BufReadPost *
         \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
         \   exe "normal g`\"" |
         \ endif
-
   " Cucumber navigation commands
   autocmd User Rails Rnavcommand step features/step_definitions -glob=**/* -suffix=_steps.rb
   autocmd User Rails Rnavcommand config config -glob=**/* -suffix=.rb -default=routes
-
   " Set syntax highlighting for specific file types
   autocmd BufRead,BufNewFile *.md set filetype=markdown
-  "
-  "           " Enable spellchecking for Markdown
+  " Enable spellchecking for Markdown
   "autocmd BufRead,BufNewFile *.md setlocal spell
-  "
-  "               " Automatically wrap at 80 characters for Markdown
+  " Automatically wrap at 80 characters for Markdown
   autocmd BufRead,BufNewFile *.md setlocal textwidth=80
 augroup END
 
@@ -85,26 +79,25 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 
-
 " Display extra whitespace
 set nolist listchars=tab:»·,trail:·
 
-"                     " Use The Silver Searcher
-"                     https://github.com/ggreer/the_silver_searcher
-"                     if executable('ag')
-"                       " Use Ag over Grep
-"                         set grepprg=ag\ --nogroup\ --nocolor
+" Use The Silver Searcher
+"    https://github.com/ggreer/the_silver_searcher
+"     if executable('ag')
+" Use Ag over Grep
+"  et grepprg=ag\ --nogroup\ --nocolor
 "
-"                           " Use ag in CtrlP for listing files. Lightning
-"                           fast and respects .gitignore
-"                             let g:ctrlp_user_command = 'ag %s -l
-"                             --nocolor -g ""'
+    " Use ag in CtrlP for listing files. Lightning
+"   fast and respects .gitignore
+"     let g:ctrlp_user_command = 'ag %s -l
+"     --nocolor -g ""'
 "endif
 
 " Numbers
 set number
 set numberwidth=5
-"
+"  old crap {{{
 " " Snippets are activated by Shift+Tab
 " let g:snippetsEmu_key = "<S-Tab>"
 "
@@ -142,41 +135,35 @@ set numberwidth=5
 "nnoremap <Up> :echoe "Use k"<CR>
 "nnoremap <Down> :echoe "Use j"<CR>
 "
-"                                 " Treat <li> and <p> tags like the block
-"                                 tags they are
-"                                 let g:html_indent_tags = 'li\|p'
-"
-"                                 " Open new split panes to right and
-"                                 bottom, which feels more natural
-"                                 set splitbelow
-"                                 set splitright
-"
 "                                 " Quicker window movement
 "                                 nnoremap <C-j> <C-w>j
 "                                 nnoremap <C-k> <C-w>k
 "                                 nnoremap <C-h> <C-w>h
 "                                 nnoremap <C-l> <C-w>l
 "
-"                                 " configure syntastic syntax checking to
-"                                 check on open as well as save
-"                                 let g:syntastic_check_on_open=1
-"
 "                                 " Local config
 "                                 if filereadable($HOME . "/.vimrc.local")
 "                                   source ~/.vimrc.local
 "                                   endif
-"
-"
-"
-autocmd BufRead,BufNewFile *.jbuilder set filetype=Ruby
-autocmd BufRead,BufNewFile *.arb set filetype=Ruby
-autocmd BufNewFile,BufRead Gemfile set filetype=ruby
+" }}}
+
+augroup more_ruby_filetype
+  autocmd!
+  autocmd BufRead,BufNewFile *.jbuilder set filetype=Ruby
+  autocmd BufRead,BufNewFile *.arb set filetype=Ruby
+  autocmd BufNewFile,BufRead Gemfile set filetype=ruby
+  " TODO didn't work
+  autocmd BufNewFile,BufRead *.coffee.erb set filetype=coffee
+augroup END
 set t_Co=256
 colorscheme jellybeans 
 set ts=2 sw=2 et
 hi IndentGuidesOdd  ctermbg=234
 hi IndentGuidesEven ctermbg=235
-autocmd  FileType * IndentGuidesEnable
+augroup filetype_IndentGuidesEnable
+  autocmd!
+  autocmd  FileType * IndentGuidesEnable
+augroup END
 set mouse=nicr
 "map h gT
 "map l gt
@@ -211,14 +198,20 @@ map é $
 map ♞ <C-w>t<C-w>K
 map ♘ <C-w>t<C-w>H
 
+imap éé <ESC>Vaf
+imap éé <ESC>Vaf
+
+
 
 map ♋  :tabnew<CR>
 map ♈  <C-w><C-w>
 map è :tabnew<CR>:NERDTreeToggle<CR>
 map <Leader>è :vs<CR>:NERDTreeToggle<CR>
+" control p
 map <Leader>é :tabnew<CR><C-p>
 map <Leader>s :vs<CR><C-p>
 map <Leader>n <C-w>w
+" align = and hash
 map <Leader>l :Tabularize /=<CR>
 map <Leader>p :Tabularize/\w:\zs/<CR>
 map <Leader>1 1gt
@@ -233,8 +226,11 @@ map <Leader>9 9gt
 map <Leader>a <C-p>
 " Rang tool
 map <Leader>t :%s/$scope/\$scope/g<CR>
-map <Leader>dl :set paste<CR>
-map <Leader>dt :set nopaste<CR>
+" paste
+map <Leader>dl :set paste!<CR>
+"Upercase word
+imap àà <esc>bveUw
+noremap à V
 
 "
 " RANG path
@@ -246,6 +242,7 @@ cmap ⦿s source/assets/javascripts/ng/services/
 cmap ⦿t source/templates
 cmap ⦿p source/partials
 
+"comand visual range
 command! -range Vis call setpos('.', [0,<line1>,0,0]) |
                     \ exe "normal V" |
                     \ call setpos('.', [0,<line2>,0,0])
@@ -262,8 +259,12 @@ command! -range Vis call setpos('.', [0,<line1>,0,0]) |
 " ouvrir la commande pour remplacer toto_tag par le text de son choix
 
 
-autocmd ColorScheme * highlight Normal ctermbg=None
-autocmd ColorScheme * highlight NonText ctermbg=None
+augroup rc_color_scheme
+  autocmd!
+  autocmd ColorScheme * highlight Normal ctermbg=None
+  autocmd ColorScheme * highlight NonText ctermbg=None
+augroup END
+
 hi Normal ctermbg=none
 
 let g:airline_theme='wombat'
@@ -298,3 +299,10 @@ set foldlevelstart=1
 
 "autocmd BufWinEnter * normal! zR
 set foldlevelstart=1
+
+"adtocmd FileType coffee onoremap <buffer> p V:<c-u>call coffee_tools#FunctionTextObject('a')<cr>
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '◀'
+let g:airline_section_b = '%{getcwd()}'
+let g:airline_section_c = '%t'
+
