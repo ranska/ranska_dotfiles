@@ -198,8 +198,8 @@ map é $
 map ♞ <C-w>t<C-w>K
 map ♘ <C-w>t<C-w>H
 
-imap éé <ESC>Vaf
-imap éé <ESC>Vaf
+"imap éé <ESC>Vaf
+"imap éé <ESC>Vaf
 
 
 

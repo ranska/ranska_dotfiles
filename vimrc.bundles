@@ -77,9 +77,11 @@ Plugin 'mileszs/ack.vim'
 Plugin 'AndrewRadev/coffee_tools.vim'
 Plugin 'ranska/vim-coffeescript-refactoring'
 
+Plugin 'jiangmiao/auto-pairs'
+
 
 "new to test
-Bundle 'mhinz/vim-startify'
+Plugin 'mhinz/vim-startify'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
