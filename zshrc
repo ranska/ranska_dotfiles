@@ -157,3 +157,21 @@ eval "$(tmuxifier init -)"
 
 export PATH="$HOME/midman_apps/creator:$PATH"
 
+#AUTOSUGGESTION_HIGHLIGHT_COLOR="fg=7"
+
+# Finexcap kerl bin
+export PATH="$HOME/clients/finexkap/kerl_bin/:$PATH"
+
+# Docker config
+
+export DOCKER_HOST=tcp://192.168.59.103:2376
+export DOCKER_CERT_PATH=/Users/ranska/.boot2docker/certs/boot2docker-vm
+export DOCKER_TLS_VERIFY=1
+
+# Finexcap alias
+alias nexkapup="rm -f Gemfile.lock && bundle install && bundle update && rake db:migrate && npm install && bower install && rspec"
+alias nexkappull="git pull && rm -f Gemfile.lock && bundle install && rake db:migrate && rspec"
+alias goodmorningnexkap="git pull && nexkapup"
+
+
+

@@ -1,10 +1,15 @@
 set nocompatible               " be iMproved
 filetype off                   " required!
 
+let g:tinykeymap#map#tabs#map = "gé"
+let g:tinykeymap#map#windows#map = "gé"
 
 if filereadable(expand("~/.vimrc.bundles"))
-    source ~/.vimrc.bundles
-  endif
+  source ~/.vimrc.bundles
+endif
+if filereadable(expand("~/.vimrc.tabmode"))
+  source ~/.vimrc.tabmode
+endif
 
 "
 " see :h vundle for more details or wiki for FAQ
@@ -165,83 +170,6 @@ augroup filetype_IndentGuidesEnable
   autocmd  FileType * IndentGuidesEnable
 augroup END
 set mouse=nicr
-"map h gT
-"map l gt
-map ♥ <ESC>:w<Return>
-imap ♥ <ESC>:w<Return>
-map ♢ <ESC>:q<Return>
-imap ♢ <ESC>:q<Return>
-cmap é <C-t>
-"map ù <C-p>
-imap ♋ <ESC>:q<Return>
-map ♋ :q<Return>
-map ⦿ cw
-imap ⦿ <C-p>
-map <C-n> :NERDTreeToggle<CR>
-imap <C-n> <ESC>:NERDTreeToggle<CR>
-map ✔ :NERDTreeToggle<CR>
-imap ✔ <ESC>:NERDTreeToggle<CR>
-map ☆ <C-p>
-imap ☆ <C-t>
-cmap ☆ <C-(>
-map! ☆ <)C-t>
-map ♧ <<
-map ♡ >>
-
-imap ♧ <ESC><<i
-imap ♡ <ESC>>>i
-map ♤ c$
-
-imap ♤ <ESC>c$
-map é $
-"imap é -><Return>
-map ♞ <C-w>t<C-w>K
-map ♘ <C-w>t<C-w>H
-
-"imap éé <ESC>Vaf
-"imap éé <ESC>Vaf
-
-
-
-map ♋  :tabnew<CR>
-map ♈  <C-w><C-w>
-map è :tabnew<CR>:NERDTreeToggle<CR>
-map <Leader>è :vs<CR>:NERDTreeToggle<CR>
-" control p
-map <Leader>é :tabnew<CR><C-p>
-map <Leader>s :vs<CR><C-p>
-map <Leader>n <C-w>w
-" align = and hash
-map <Leader>l :Tabularize /=<CR>
-map <Leader>p :Tabularize/\w:\zs/<CR>
-map <Leader>1 1gt
-map <Leader>2 2gt
-map <Leader>3 3gt
-map <Leader>4 4gt
-map <Leader>5 5gt
-map <Leader>6 6gt
-map <Leader>7 7gt
-map <Leader>8 8gt
-map <Leader>9 9gt
-map <Leader>a <C-p>
-" Rang tool
-map <Leader>t :%s/$scope/\$scope/g<CR>
-" paste
-map <Leader>dl :set paste!<CR>
-"Upercase word
-imap àà <esc>bveUw
-noremap à V
-
-"
-" RANG path
-"
-"
-cmap ⦿g source/assets/javascripts/ng/
-cmap ⦿c source/assets/javascripts/ng/controllers/
-cmap ⦿s source/assets/javascripts/ng/services/
-cmap ⦿t source/templates
-cmap ⦿p source/partials
-
 "comand visual range
 command! -range Vis call setpos('.', [0,<line1>,0,0]) |
                     \ exe "normal V" |
@@ -274,25 +202,11 @@ syntax enable
 filetype plugin indent on
 
 
-" Mouse section 
+" Mouse section
 set ttyfast
 set mouse=a
 "xterm2 is good for iterm2 mac
 set ttymouse=xterm2
-
-
-
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-nnoremap <leader>sv :source $MYVIMRC<cr>
-
-
-
-" no nnoremap because of surround plugin
-map <leader>sl yyP$ysiw'j$
-
-
-" source plugin under dev
-nnoremap <leader>p⦿ :source %<cr>
 
 set backspace=2
 set foldlevelstart=1
@@ -306,3 +220,42 @@ let g:airline_right_sep = '◀'
 let g:airline_section_b = '%{getcwd()}'
 let g:airline_section_c = '%t'
 
+let g:languagetool_jar = '/Users/ranska/softwares/LanguageTool-2.8/languagetool-commandline.jar'
+
+
+let g:meow=1
+
+function! Meow()
+  if g:meow ==1
+    "set meow!
+
+  colorscheme jellybeans
+v autocmd ColorScheme * highlight Normal ctermbg=None
+  autocmd ColorScheme * highlight NonText ctermbg=None
+  else
+  autocmd ColorScheme * highlight Normal ctermbg=White
+  autocmd ColorScheme * highlight NonText ctermbg=White
+colorscheme github
+
+  endif
+  let g:meow = g:meow * -1
+endfunction
+
+"TODO clipboard to register
+"set clipboard=unnamed           " clipboard system"
+
+"silent exe "g:flog_enable"
+"remove trailing whitespaces
+autocmd BufWritePre *.rb :%s/\s\+$//e
+
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
+
+
+if filereadable(expand("~/.vimrc.leader_map"))
+  source ~/.vimrc.leader_map
+endif

@@ -81,7 +81,13 @@ Plugin 'jiangmiao/auto-pairs'
 
 
 "new to test
-Plugin 'mhinz/vim-startify'
+"Plugin 'mhinz/vim-startify'
+Plugin 'christoomey/vim-tmux-runner'
+Plugin 'vim-scripts/LanguageTool'
+Plugin 'tomtom/tinykeymap_vim'
+Plugin 'jgdavey/vim-blockle'
+"Plugin 'zhaocai/GoldenView.Vim'
+"Plugin 'sentientmonkey/vim-flog'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
