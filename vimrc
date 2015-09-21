@@ -4,6 +4,12 @@ filetype off                   " required!
 let g:tinykeymap#map#tabs#map = "gé"
 let g:tinykeymap#map#windows#map = "gé"
 
+" leader vlm vb vtm sm
+"
+" vlm  map
+" vb   
+" vtm
+" sm   snippet
 if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
 endif
@@ -230,7 +236,7 @@ function! Meow()
     "set meow!
 
   colorscheme jellybeans
-v autocmd ColorScheme * highlight Normal ctermbg=None
+  autocmd ColorScheme * highlight Normal ctermbg=None
   autocmd ColorScheme * highlight NonText ctermbg=None
   else
   autocmd ColorScheme * highlight Normal ctermbg=White
@@ -253,9 +259,16 @@ match ExtraWhitespace /\s\+$/
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()
+"autocmd BufWinLeave * call clearmatches()
 
 
 if filereadable(expand("~/.vimrc.leader_map"))
   source ~/.vimrc.leader_map
 endif
+
+highlight Pmenu ctermbg=236 ctermfg=145
+
+
+
+
+

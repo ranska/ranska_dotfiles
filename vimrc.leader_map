@@ -8,8 +8,6 @@ cmap é <C-t>
 "map ù <C-p>
 imap ♋ <ESC>:q<Return>
 map ♋ :q<Return>
-map ⦿ cw
-imap ⦿ <C-p>
 map <C-n> :NERDTreeToggle<CR>
 imap <C-n> <ESC>:NERDTreeToggle<CR>
 map ✔ :NERDTreeToggle<CR>
@@ -31,7 +29,7 @@ map ♘ <C-w>t<C-w>H
 "imap éé <ESC>Vaf
 "imap éé <ESC>Vaf
 map ♋  :tabnew<CR>
-map ♈  <C-w><C-w>
+"map ♈  <C-w><C-w>
 map è :tabnew<CR>:NERDTreeToggle<CR>
 map <Leader>è :vs<CR>:NERDTreeToggle<CR>
 " control p
@@ -52,7 +50,8 @@ map <Leader>8 8gt
 map <Leader>9 9gt
 map <Leader>a <C-p>
 " Rang tool
-map <Leader>t :%s/$scope/\$scope/g<CR>
+"map <Leader>t :%s/$scope/\$scope/g<CR>
+map <Leader>t "t
 " paste
 map <Leader>dl :set paste!<CR>
 "Upercase word
@@ -75,8 +74,58 @@ cmap ⦿p source/partials
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
+nnoremap <leader>vlm :vsplit ~/.vimrc.leader_map<cr>
+nnoremap <leader>vb :vsplit ~/.vimrc.bundles<cr>
+nnoremap <leader>vtm :vsplit ~/.vimrc.tabmode<cr>
+nnoremap <leader>sm :vsplit ~/.vim/bundle/vim-snippets/snippets<cr>
+
 " no nnoremap because of surround plugin
 map <leader>sl yyP$ysiw'j$
 
 " source plugin under dev
 nnoremap <leader>p⦿ :source %<cr>
+
+
+"let g:UltiSnipsExpandTrigger = '☺'
+"let g:UltiSnipsExpandTrigger = '☺'
+"let g:UltiSnipsJumpForwardTrigger = 'è'
+"let g:UltiSnipsJumpBackwardTrigger = 'à'
+"map è <C-j>
+"map à <C-j>
+nmap ⦿ cw
+imap ⦿ <C-p>
+"imap ⦿ <C-l>
+"imap ☺ <C-l>
+"smap è <C-k>
+
+"smap ⦿ <C-j>
+
+"map à call UltiSnips#JumpForwards()
+"
+"vmap  <silent> ⦿ ☺context
+map <leader>ta <C-]>
+nnoremap <leader>. :CtrlPTag<cr>
+
+
+"ruby motion
+"
+"forward method
+map <leader>u ]m
+map <leader>U ]M
+" previous method
+map <leader>mm [m
+map <leader>M [M
+" forward and open new
+map <leader>i ]Mo<CR>def<TAB>
+imap ii <ESC>o
+
+" Uge warnig use noremap and so one
+map t j
+map s k
+
+
+" VTR tmux runner
+map <leader>de :VtrSendLinesToRunner<cr>
+map <leader>do :VtrOpenRunner {'orientation': 'h', 'percentage':30}<cr>
+map <leader>dk :VtrKillRunner<cr>
+
