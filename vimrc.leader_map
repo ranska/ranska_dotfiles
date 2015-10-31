@@ -129,3 +129,19 @@ map <leader>de :VtrSendLinesToRunner<cr>
 map <leader>do :VtrOpenRunner {'orientation': 'h', 'percentage':30}<cr>
 map <leader>dk :VtrKillRunner<cr>
 
+
+
+" extract methods
+
+"task point:
+"- store line to extract into a buffer
+"- write psudo plugin into a function on vimrc.
+"- reload easly modifications
+
+vmap <leader>⦿ "bdOmethod_extracted1<esc>]Mo<CR>def<tab>method_extracted1<tab><esc>dd"bP:%s/method_extracted1/
+
+
+let g:choosewin_overlay_enable = 1
+let g:choosewin_color_overlay = { 'cterm': [23, 23]  }
+let g:choosewin_color_overlay_current = { 'cterm': [58, 58]  }
+map <leader>, :ChooseWin<CR>
