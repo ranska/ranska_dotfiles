@@ -65,6 +65,8 @@ Plugin 'plasticboy/vim-markdown'
 " select indented block'
 Plugin 'kana/vim-textobj-user'
 Plugin 'glts/vim-textobj-indblock'
+
+Plugin 'dkprice/vim-easygrep'
 "
 " Brief help
 " :PluginList          - list configured bundles
@@ -97,13 +99,18 @@ Plugin 'jgdavey/vim-blockle'
 
 Plugin 'AndrewRadev/switch.vim'
 Plugin 'rainerborene/vim-reek'
+Plugin 'ngmy/vim-rubocop'
 
 Plugin 'ingo-library'
 Plugin 'clone'
 
-
+"window navigation
 Plugin 't9md/vim-choosewin'
 Plugin 'ap/vim-css-color'
+" search pattern
+Plugin 'josuecau/ctrlsf.vim'
+Plugin 'tpope/vim-projectionist'
+Plugin 'unegunn/vim-emoji'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

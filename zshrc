@@ -94,10 +94,10 @@ source $ZSH/custom/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 test -e ~/.dircolors && eval `dircolors -b ~/.dircolors`
-#alias ls="ls --color=always" 
-alias lsl="ls++" 
-alias lda="ls++" 
-alias ls="ls --color=always" 
+#alias ls="ls --color=always"
+alias lsl="ls++"
+alias lda="ls++"
+alias ls="ls --color=always"
 alias grep="grep --color=always"
 alias egrep="egrep --color=always"
 
@@ -168,10 +168,11 @@ export DOCKER_HOST=tcp://192.168.59.103:2376
 export DOCKER_CERT_PATH=/Users/ranska/.boot2docker/certs/boot2docker-vm
 export DOCKER_TLS_VERIFY=1
 
-# Finexcap alias
-alias nexkapup="rm -f Gemfile.lock && bundle install && bundle update && rake db:migrate && npm install && bower install && rspec"
-alias nexkappull="git pull && rm -f Gemfile.lock && bundle install && rake db:migrate && rspec"
-alias goodmorningnexkap="git pull && nexkapup"
+# tmux alias
+alias tk="tmux kill-session -t"
 
+alias gbpurge='git branch --merged | grep -v "\*" | grep -v "master" | grep -v "develop" | grep -v "staging" | xargs -n 1 git branch -d'
+
+alias gprac='ga . && gc && gp && pullr -i develop -I origin'
 
 

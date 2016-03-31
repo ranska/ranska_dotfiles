@@ -7,7 +7,7 @@ let g:tinykeymap#map#windows#map = "gé"
 " leader vlm vb vtm sm
 "
 " vlm  map
-" vb   
+" vb
 " vtm
 " sm   snippet
 if filereadable(expand("~/.vimrc.bundles"))
@@ -107,7 +107,7 @@ set nolist listchars=tab:»·,trail:·
 
 " Numbers
 set number
-set numberwidth=5
+set numberwidth=4
 "  old crap {{{
 " " Snippets are activated by Shift+Tab
 " let g:snippetsEmu_key = "<S-Tab>"
@@ -167,7 +167,7 @@ augroup more_ruby_filetype
   autocmd BufNewFile,BufRead *.coffee.erb set filetype=coffee
 augroup END
 set t_Co=256
-colorscheme jellybeans 
+colorscheme jellybeans
 set ts=2 sw=2 et
 hi IndentGuidesOdd  ctermbg=234
 hi IndentGuidesEven ctermbg=235
@@ -225,6 +225,10 @@ let g:airline_left_sep = '▶'
 let g:airline_right_sep = '◀'
 let g:airline_section_b = '%{getcwd()}'
 let g:airline_section_c = '%t'
+let g:airline_section_z = airline#section#create(['hunks'])
+"let g:airline_section_y = airline#section#create(['branch'])
+
+let g:airline#extensions#hunks#enabled = 1
 
 let g:languagetool_jar = '/Users/ranska/softwares/LanguageTool-2.8/languagetool-commandline.jar'
 
@@ -269,6 +273,22 @@ endif
 highlight Pmenu ctermbg=236 ctermfg=145
 
 
+" In .vimrc
+silent! if emoji#available()
+  let g:gitgutter_sign_added = emoji#for('seedling')
+  let g:gitgutter_sign_modified = emoji#for('small_orange_diamond')
+  let g:gitgutter_sign_removed = emoji#for('small_red_triangle')
+  let g:gitgutter_sign_modified_removed = emoji#for('collision')
+  set completefunc=emoji#complete
+endif
+"augroup emoji_complete
+"  autocmd!
+"  autocmd FileType markdown setlocal completefunc=emoji#complete
+"augroup END
 
-
-
+" supprime le | dans la bar de vertical split
+set fillchars+=vert:.
+hi VertSplit ctermbg=236 ctermfg=236
+hi VertSplit ctermbg=none ctermfg=237
+" change la couleur des ~ des lignes vides
+hi NonText ctermfg=237

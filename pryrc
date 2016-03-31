@@ -27,3 +27,12 @@ if defined?(::Rails) && Rails.env
     end
   end
 end
+
+begin
+  require 'pry-theme'
+  #Pry.config.theme = "solarized"
+  Pry.config.theme = "zenburn"
+rescue LoadError => e
+  warn "[WARN] #{e}"
+  puts "$ gem install pry-theme"
+end

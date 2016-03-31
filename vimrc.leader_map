@@ -1,11 +1,15 @@
 "map h gT
 "map l gt
+"
 map ♥ <ESC>:w<Return>
 imap ♥ <ESC>:w<Return>
+map ç <ESC>:w<Return>
+imap ç <ESC>:w<Return>
+"
 map ♢ <ESC>:q<Return>
 imap ♢ <ESC>:q<Return>
 cmap é <C-t>
-"map ù <C-p>
+map ù <C-p>
 imap ♋ <ESC>:q<Return>
 map ♋ :q<Return>
 map <C-n> :NERDTreeToggle<CR>
@@ -120,8 +124,8 @@ map <leader>i ]Mo<CR>def<TAB>
 imap ii <ESC>o
 
 " Uge warnig use noremap and so one
-map t j
-map s k
+"map t j
+"map s k
 
 
 " VTR tmux runner
@@ -137,11 +141,66 @@ map <leader>dk :VtrKillRunner<cr>
 "- store line to extract into a buffer
 "- write psudo plugin into a function on vimrc.
 "- reload easly modifications
+"old line
+function! AskFor(something)
+  call inputsave()
+  let name = input(a:something . ': ')
+  call inputrestore()
+  return name
+endfunction
 
-vmap <leader>⦿ "bdOmethod_extracted1<esc>]Mo<CR>def<tab>method_extracted1<tab><esc>dd"bP:%s/method_extracted1/
+"
+" TODO this function should take parameters
+" and add text type
+" TODO need a mark after extraction (for example editing condition)
+"
+function! TextAfterExtractionBegin()
+  execute "normal Obegin\<cr>  method_extracted1\<cr>ensure\<cr>end\<esc>j"
+endfunction
+function! TextAfterExtractionIf()
+    execute "normal Oif (condition)\<cr>  method_extracted1\<cr>end\<esc>j"
+endfunction
+function! TextAfterExtractionSimple()
+    execute "normal Omethod_extracted1"
+endfunction
 
+"
+"bdOmethod_extracted1<esc>]Mo<CR>def<tab>method_extracted1<tab><esc>dd"bP:%s/method_extracted1/
+function! ExtractRubyMethod(variation)
+  let name = AskFor('Method name')
+  "cut and store lines
+  execute "normal! gv\"bd"
+  execute "call TextAfterExtraction" . a:variation . "()"
+  " go after method
+  normal ]Mo
+  " write an empty function with marker name
+  execute "normal i\<cr>def\<tab>method_extracted1\<tab>\<esc>dd"
+  " clean emtpy body from snipet and paste register body
+  " TODO clean body
+  execute "normal! \"bP"
+  " rename function
+  execute "normal :%s/method_extracted1/" . name . "\<cr>"
+  " reindent
+  execute "normal! =G$"
+  echo "ok"
+endfunction
+
+
+vmap <leader>⦿e :call ExtractRubyMethod('Simple')<cr>
+vmap <leader>⦿i :call ExtractRubyMethod('If')<cr>
+vmap <leader>⦿b :call ExtractRubyMethod('Begin')<cr>
+
+vmap <leader>⦿e "bdOmethod_extracted1<esc>]Mo<CR>def<tab>method_extracted1<tab><esc>dd"bP:%s/method_extracted1/
 
 let g:choosewin_overlay_enable = 1
 let g:choosewin_color_overlay = { 'cterm': [23, 23]  }
 let g:choosewin_color_overlay_current = { 'cterm': [58, 58]  }
 map <leader>, :ChooseWin<CR>
+map <leader>k a
+map <leader>z b
+
+let g:switch_mapping = "-"
+map <Backspace> <esc>:echo "use something else Du mormon !"<CR>
+inoremap <BS> <esc>:echo "use something else Du mormon !"<CR>
+imap <BS> <Nop>
+imap € <C-x><C-u>
