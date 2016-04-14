@@ -175,4 +175,4 @@ alias gbpurge='git branch --merged | grep -v "\*" | grep -v "master" | grep -v "
 
 alias gprac='ga . && gc && gp && pullr -i develop -I origin'
 
-
+alias gcal="vim -c 'colorscheme pablo' -c 'Calendar'"

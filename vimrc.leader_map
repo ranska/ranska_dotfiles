@@ -19,7 +19,7 @@ imap ✔ <ESC>:NERDTreeToggle<CR>
 map ☆ <C-p>
 imap ☆ <C-t>
 cmap ☆ <C-(>
-map! ☆ <)C-t>
+map! ☆ <C-t>
 map ♧ <<
 map ♡ >>
 imap ♧ <ESC><<i
@@ -154,35 +154,44 @@ endfunction
 " and add text type
 " TODO need a mark after extraction (for example editing condition)
 "
-function! TextAfterExtractionBegin()
-  execute "normal Obegin\<cr>  method_extracted1\<cr>ensure\<cr>end\<esc>j"
+function! TextAfterExtractionBegin(name)
+  execute "normal Obegin\<cr>  " . a:name . "\<cr>ensure\<cr>end\<esc>j"
 endfunction
-function! TextAfterExtractionIf()
-    execute "normal Oif (condition)\<cr>  method_extracted1\<cr>end\<esc>j"
+function! TextAfterExtractionIf(name)
+    execute "normal Oif (condition)\<cr>  " . a:name . "\<cr>end\<esc>j"
 endfunction
-function! TextAfterExtractionSimple()
-    execute "normal Omethod_extracted1"
+function! TextAfterExtractionSimple(name)
+    execute "normal O" . a:name . ""
 endfunction
 
-"
-"bdOmethod_extracted1<esc>]Mo<CR>def<tab>method_extracted1<tab><esc>dd"bP:%s/method_extracted1/
-function! ExtractRubyMethod(variation)
-  let name = AskFor('Method name')
-  "cut and store lines
+" write an empty function with marker name
+" TODO clean body
+function! CreateStandardDef(name)
+  execute "normal i\<cr>def\<tab>" . a:name . "\<tab>\<esc>dd"
+  " clean emtpy body from snipet and paste register body
+  execute "normal! \"bP"
+endfunction
+
+"store visual lines on register b
+function! CutAndStoreLines()
   execute "normal! gv\"bd"
-  execute "call TextAfterExtraction" . a:variation . "()"
+endfunction
+"
+function! Step2(name)
+  " rename function
+  execute "normal :%s/method_extracted1/" . a:name . "\<cr>"
+endfunction
+
+"5 action ,  named, extract, replace |move| create_named, paste content
+function! ExtractRubyMethod(variation) range
+  let name = AskFor('Method name')
+  call CutAndStoreLines()
+  execute "call TextAfterExtraction" . a:variation . "('" . name . "')"
   " go after method
   normal ]Mo
-  " write an empty function with marker name
-  execute "normal i\<cr>def\<tab>method_extracted1\<tab>\<esc>dd"
-  " clean emtpy body from snipet and paste register body
-  " TODO clean body
-  execute "normal! \"bP"
-  " rename function
-  execute "normal :%s/method_extracted1/" . name . "\<cr>"
+  call CreateStandardDef(name)
   " reindent
   execute "normal! =G$"
-  echo "ok"
 endfunction
 
 
@@ -190,10 +199,11 @@ vmap <leader>⦿e :call ExtractRubyMethod('Simple')<cr>
 vmap <leader>⦿i :call ExtractRubyMethod('If')<cr>
 vmap <leader>⦿b :call ExtractRubyMethod('Begin')<cr>
 
-vmap <leader>⦿e "bdOmethod_extracted1<esc>]Mo<CR>def<tab>method_extracted1<tab><esc>dd"bP:%s/method_extracted1/
+"vmap <leader>⦿e "bdOmethod_extracted1<esc>]Mo<CR>def<tab>method_extracted1<tab><esc>dd"bP:%s/method_extracted1/
+"vmap <leader>ii :call ExtractRubyMethod('Simple')<cr>
 
-let g:choosewin_overlay_enable = 1
-let g:choosewin_color_overlay = { 'cterm': [23, 23]  }
+let g:choosewin_overlay_enable        = 1
+let g:choosewin_color_overlay         = { 'cterm': [23, 23]  }
 let g:choosewin_color_overlay_current = { 'cterm': [58, 58]  }
 map <leader>, :ChooseWin<CR>
 map <leader>k a
@@ -204,3 +214,5 @@ map <Backspace> <esc>:echo "use something else Du mormon !"<CR>
 inoremap <BS> <esc>:echo "use something else Du mormon !"<CR>
 imap <BS> <Nop>
 imap € <C-x><C-u>
+
+map <leader>tt <C-]>

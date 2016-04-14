@@ -108,55 +108,10 @@ set nolist listchars=tab:»·,trail:·
 " Numbers
 set number
 set numberwidth=4
-"  old crap {{{
-" " Snippets are activated by Shift+Tab
-" let g:snippetsEmu_key = "<S-Tab>"
-"
-" " Tab completion
-" " will insert tab at beginning of line,
-" " will use completion if not at beginning
-" set wildmode=list:longest,list:full
-" set complete=.,w,t
-" function! InsertTabWrapper()
-"     let col = col('.') - 1
-"         if !col || getline('.')[col - 1] !~ '\k'
-"                 return "\<tab>"
-"                     else
-"                             return "\<c-p>"
-"                                 endif
-"                                 endfunction
-"                                 inoremap <Tab>
-"                                 <c-r>=InsertTabWrapper()<cr>
-"
-"                                 " Exclude Javascript files in :Rtags via
-"                                 rails.vim due to warnings when parsing
-"                                 let g:Tlist_Ctags_Cmd="ctags
-"                                 --exclude='*.js'"
-"
-"                                 " Index ctags from any project, including
-"                                 those outside Rails
-"                                 map <Leader>ct :!ctags -R .<CR>
-"
-"                                 " Switch between the last two files
-"                                 nnoremap <leader><leader> <c-^>
-"
-"                                 " Get off my lawn
 "nnoremap <Left> :echoe "Use h"<CR>
 "nnoremap <Right> :echoe "Use l"<CR>
 "nnoremap <Up> :echoe "Use k"<CR>
 "nnoremap <Down> :echoe "Use j"<CR>
-"
-"                                 " Quicker window movement
-"                                 nnoremap <C-j> <C-w>j
-"                                 nnoremap <C-k> <C-w>k
-"                                 nnoremap <C-h> <C-w>h
-"                                 nnoremap <C-l> <C-w>l
-"
-"                                 " Local config
-"                                 if filereadable($HOME . "/.vimrc.local")
-"                                   source ~/.vimrc.local
-"                                   endif
-" }}}
 
 augroup more_ruby_filetype
   autocmd!
@@ -271,9 +226,9 @@ if filereadable(expand("~/.vimrc.leader_map"))
 endif
 
 highlight Pmenu ctermbg=236 ctermfg=145
+highlight Visual cterm=NONE ctermbg=0
 
 
-" In .vimrc
 silent! if emoji#available()
   let g:gitgutter_sign_added = emoji#for('seedling')
   let g:gitgutter_sign_modified = emoji#for('small_orange_diamond')
@@ -292,3 +247,27 @@ hi VertSplit ctermbg=236 ctermfg=236
 hi VertSplit ctermbg=none ctermfg=237
 " change la couleur des ~ des lignes vides
 hi NonText ctermfg=237
+
+
+" Fugitive color
+" http://i.stack.imgur.com/U5AJI.png
+"
+hi! DiffAdd      ctermbg=22
+hi! DiffChange   ctermbg=235
+" zone grise
+hi! DiffDelete   ctermfg=237 ctermbg=none
+" info zone NOTE bug fg and bg are reversed
+hi! DiffText     ctermfg=233  ctermbg=136
+
+" EasyGrep config
+let g:EasyGrepRoot = "search:app,spec,db,features,config,lib,bin"
+
+
+" calendar
+let g:calendar_google_calendar = 1
+let g:calendar_google_task = 1
+let g:indent_guides_exclude_filetypes = ['calendar']
+
+"rubyblock
+runtime macros/matchit.vim
+set tags=.git/tags,tags

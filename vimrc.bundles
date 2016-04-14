@@ -65,14 +65,10 @@ Plugin 'plasticboy/vim-markdown'
 " select indented block'
 Plugin 'kana/vim-textobj-user'
 Plugin 'glts/vim-textobj-indblock'
+Plugin 'nelstrom/vim-textobj-rubyblock'
+
 
 Plugin 'dkprice/vim-easygrep'
-"
-" Brief help
-" :PluginList          - list configured bundles
-" :PluginInstall(!)    - install(update) bundles
-" :PluginSearch(!) foo - search(or refresh cache first) for foo
-" :PluginClean(!)      - confirm(or auto-approve) removal of unused bundles
 
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-reload'
@@ -112,6 +108,8 @@ Plugin 'josuecau/ctrlsf.vim'
 Plugin 'tpope/vim-projectionist'
 Plugin 'unegunn/vim-emoji'
 
+Plugin 'itchyny/calendar.vim'
+Plugin 'szw/vim-tags'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
