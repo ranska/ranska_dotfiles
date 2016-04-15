@@ -174,5 +174,7 @@ alias tk="tmux kill-session -t"
 alias gbpurge='git branch --merged | grep -v "\*" | grep -v "master" | grep -v "develop" | grep -v "staging" | xargs -n 1 git branch -d'
 
 alias gprac='ga . && gc && gp && pullr -i develop -I origin'
+alias gcld='gcd && gl origin develop'
 
 alias gcal="vim -c 'colorscheme pablo' -c 'Calendar'"
+
