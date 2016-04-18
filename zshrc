@@ -177,4 +177,5 @@ alias gprac='ga . && gc && gp && pullr -i develop -I origin'
 alias gcld='gcd && gl origin develop'
 
 alias gcal="vim -c 'colorscheme pablo' -c 'Calendar'"
+alias gflfp="gfl feature pull origin"
 
