@@ -118,6 +118,7 @@ augroup more_ruby_filetype
   autocmd BufRead,BufNewFile *.jbuilder set filetype=Ruby
   autocmd BufRead,BufNewFile *.arb set filetype=Ruby
   autocmd BufNewFile,BufRead Gemfile set filetype=ruby
+  autocmd BufNewFile,BufRead Gemfile.develop set filetype=ruby
   " TODO didn't work
   autocmd BufNewFile,BufRead *.coffee.erb set filetype=coffee
 augroup END
@@ -212,6 +213,13 @@ endfunction
 "silent exe "g:flog_enable"
 "remove trailing whitespaces
 autocmd BufWritePre *.rb :%s/\s\+$//e
+autocmd BufWritePre *.slim :%s/\s\+$//e
+
+"clean too mutch blank line and insert blank line beetween def
+autocmd BufWritePre *.rb :%s/end\_s  def/end\r\r  def/e
+autocmd BufWritePre *.rb :%s/\n\{3,}/\r\r/e
+
+
 
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
@@ -270,4 +278,17 @@ let g:indent_guides_exclude_filetypes = ['calendar']
 
 "rubyblock
 runtime macros/matchit.vim
-set tags=.git/tags,tags
+"set tags=.git/tags,tags
+set tags=./tags,tags,/Users/ranska/commontags
+
+set tags+=.git/tags
+set tags+=tags
+"let g:vim_tags_directories = [".git", ".hg", ".svn", ".bzr", "_darcs", "CVS"]
+let g:vim_tags_directories = ["."]
+let g:vim_tags_main_file = 'tags'
+
+
+let g:syntastic_error_symbol='✗'
+let g:syntastic_warning_symbol='⚠'
+
+"echom "('.') fait le ou ne le fait pas mais il n'y pas d'essais"

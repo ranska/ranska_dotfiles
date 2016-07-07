@@ -94,6 +94,7 @@ Plugin 'jgdavey/vim-blockle'
 ""Plugin 'cakebaker/scss-syntax.vim'
 
 Plugin 'AndrewRadev/switch.vim'
+Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'rainerborene/vim-reek'
 Plugin 'ngmy/vim-rubocop'
 
@@ -110,6 +111,11 @@ Plugin 'unegunn/vim-emoji'
 
 Plugin 'itchyny/calendar.vim'
 Plugin 'szw/vim-tags'
+Plugin 'shaoqiu/ctrlp-tags.git'
+Plugin 'shaoqiu/vim-tools.git'
+Plugin 'michaeljsmith/vim-indent-object'
+Plugin 'jneen/ragel.vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required

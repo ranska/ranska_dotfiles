@@ -9,14 +9,24 @@ imap ç <ESC>:w<Return>
 map ♢ <ESC>:q<Return>
 imap ♢ <ESC>:q<Return>
 cmap é <C-t>
-map ù <C-p>
+map œ <C-p>
+map ù ⦿
+nmap ù cw
+imap ù <C-p>
+
 imap ♋ <ESC>:q<Return>
 map ♋ :q<Return>
 map <C-n> :NERDTreeToggle<CR>
 imap <C-n> <ESC>:NERDTreeToggle<CR>
 map ✔ :NERDTreeToggle<CR>
 imap ✔ <ESC>:NERDTreeToggle<CR>
+map <leader>✔v :BookmarkToRoot views<CR>
+map <leader>✔stc :BookmarkToRoot stuco<CR>
+map <leader>✔shc :BookmarkToRoot schco<CR>
+map <leader>✔s :BookmarkToRoot services<CR>
+map <leader>✔q :BookmarkToRoot query<CR>
 map ☆ <C-p>
+map <Leader>a <C-p>
 imap ☆ <C-t>
 cmap ☆ <C-(>
 map! ☆ <C-t>
@@ -41,8 +51,8 @@ map <Leader>é :tabnew<CR><C-p>
 map <Leader>s :vs<CR><C-p>
 map <Leader>n <C-w>w
 " align = and hash
-map <Leader>l :Tabularize /=<CR>
-map <Leader>p :Tabularize/\w:\zs/<CR>
+map <Leader>ll :Tabularize /=<CR>
+map <Leader>lp :Tabularize/\w:\zs/<CR>
 map <Leader>1 1gt
 map <Leader>2 2gt
 map <Leader>3 3gt
@@ -52,7 +62,6 @@ map <Leader>6 6gt
 map <Leader>7 7gt
 map <Leader>8 8gt
 map <Leader>9 9gt
-map <Leader>a <C-p>
 " Rang tool
 "map <Leader>t :%s/$scope/\$scope/g<CR>
 map <Leader>t "t
@@ -68,11 +77,17 @@ map <Leader>cp ci)
 " RANG path
 "
 "
-cmap ⦿g source/assets/javascripts/ng/
-cmap ⦿c source/assets/javascripts/ng/controllers/
-cmap ⦿s source/assets/javascripts/ng/services/
-cmap ⦿t source/templates
-cmap ⦿p source/partials
+"cmap ⦿g source/assets/javascripts/ng/
+"cmap ⦿c source/assets/javascripts/ng/controllers/
+"cmap ⦿s source/assets/javascripts/ng/services/
+"cmap ⦿t source/templates
+"cmap ⦿p source/partials
+
+cmap ⦿g app/assets/
+cmap ⦿c app/controllers/
+cmap ⦿s app/services/
+cmap ⦿v app/views/
+cmap ⦿p spec/
 
 "vimrc
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
@@ -118,6 +133,11 @@ map <leader>u ]m
 map <leader>U ]M
 " previous method
 map <leader>mm [m
+"Selectionné la méthode courant ou prev et cleanup les blanklines
+map <leader>mx [mvar"mx:%s/\n\{3,}/\r\r/e<CR>
+"cleàn up de line
+map <leader>ld :%s/end\_s  def/end\r\r  def/e<CR>
+map <leader>ls :%s/\n\{3,}/\r\r/e<CR>
 map <leader>M [M
 " forward and open new
 map <leader>i ]Mo<CR>def<TAB>
@@ -216,3 +236,10 @@ imap <BS> <Nop>
 imap € <C-x><C-u>
 
 map <leader>tt <C-]>
+
+
+let g:ctrlp_extensions = ['tags']
+nnoremap <Leader>ff :CtrlPTags<cr>
+nnoremap <Leader>fd :execute 'CtrlPTags ' . expand('<cword>')<cr>
+
+
